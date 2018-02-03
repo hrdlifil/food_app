@@ -23,7 +23,6 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
     public void initData(){
 
-
         Address address = new Address();
         address.setTown("Vyjebanec");
         address.setStreet("Zajebanec");
