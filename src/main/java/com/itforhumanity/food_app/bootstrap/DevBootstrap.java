@@ -26,7 +26,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         Address address = new Address();
         address.setTown("Vyjebanec");
         address.setStreet("Zajebanec");
-        address.setHouseNumber(666);
+        address.setHouseNumber(999);
         address.setPostalCode(66666);
 
         addressRepository.save(address);
@@ -34,7 +34,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         Address address2 = new Address();
         address2.setTown("Richov");
         address2.setStreet("Lol");
-        address2.setHouseNumber(666);
+        address2.setHouseNumber(111);
         address2.setPostalCode(66666);
 
         addressRepository.save(address2);

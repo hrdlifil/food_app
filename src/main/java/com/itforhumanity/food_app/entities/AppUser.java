@@ -1,5 +1,7 @@
 package com.itforhumanity.food_app.entities;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -53,7 +55,6 @@ public class AppUser implements Serializable {
 
     @Transient
     private String passwordAgain;
-
 
     public Long getUserId() {
         return userId;
@@ -109,6 +110,14 @@ public class AppUser implements Serializable {
 
     public void setMessagesSentToMe(Set<Message> messagesSentToMe) {
         this.messagesSentToMe = messagesSentToMe;
+    }
+
+    public Set<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
     }
 
     public String getLogin() {

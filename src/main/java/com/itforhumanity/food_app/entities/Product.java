@@ -1,5 +1,7 @@
 package com.itforhumanity.food_app.entities;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;

@@ -1,9 +1,12 @@
 package com.itforhumanity.food_app.entities;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+@Data
 @Entity
 public class Offer implements Serializable {
 
@@ -69,7 +72,6 @@ public class Offer implements Serializable {
     public void setProduct(Product product) {
         this.product = product;
     }
-
 
     public AppUser getUser_offer() {
         return user_offer;

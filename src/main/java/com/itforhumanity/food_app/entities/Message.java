@@ -1,5 +1,7 @@
 package com.itforhumanity.food_app.entities;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -71,6 +73,4 @@ public class Message implements Serializable {
     public void setSeen(Boolean seen) {
         this.seen = seen;
     }
-
-
 }
