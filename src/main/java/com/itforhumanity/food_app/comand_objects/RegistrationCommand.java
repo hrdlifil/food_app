@@ -3,9 +3,11 @@ package com.itforhumanity.food_app.comand_objects;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 public class RegistrationCommand {
 
     private String login;
@@ -21,6 +23,63 @@ public class RegistrationCommand {
     private int phone;
 
     private boolean seller;
+
+    private String street;
+
+    private int houseNumber;
+
+    private String town;
+
+    private int postalCode;
+
+    @Override
+    public String toString() {
+        return "RegistrationCommand{" +
+                "login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", phone=" + phone +
+                ", seller=" + seller +
+                ", street='" + street + '\'' +
+                ", houseNumber=" + houseNumber +
+                ", town='" + town + '\'' +
+                ", postalCode=" + postalCode +
+                '}';
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public int getHouseNumber() {
+        return houseNumber;
+    }
+
+    public void setHouseNumber(int houseNumber) {
+        this.houseNumber = houseNumber;
+    }
+
+    public String getTown() {
+        return town;
+    }
+
+    public void setTown(String town) {
+        this.town = town;
+    }
+
+    public int getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(int postalCode) {
+        this.postalCode = postalCode;
+    }
 
     public String getLogin() {
         return login;

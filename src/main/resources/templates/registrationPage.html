@@ -1,15 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
     <meta charset="UTF-8"/>
     <title>Title</title>
 </head>
 <body>
-    <form action="/secondPage" method="post">
 
-        <label for="jmeno">Křestní jméno</label>
-        <input type="text" id="jmeno" value="Zaregistrovat se"/>
+<div class="container">
+    <H1> Zaregistrujte se Prosím</H1>
+
+    <form class="form-horizontal" id="lomonosov" onsubmit="return checkInfo()" th:object="${registrationCommand}" th:action="@{/doRegister}" method="post">
+
+
+
+        <div class="form-group">
+
+        <label class="col-sm-2 control-label" for="login">Uživatelské jméno</label>
+            <div class="col-sm-10">
+        <input type="text" class="form-control" name="login" id="login" th:field="*{login}"/>
+            </div>
+
+        </div>
+        <div class="form-group">
+
+            <label class="col-sm-2 control-label" for="heslo">Heslo</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="heslo" th:field="*{password}"/>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label class="col-sm-2 control-label" for="jmeno">Křestní jméno</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="jmeno" th:field="*{name}"/>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label class="col-sm-2 control-label" for="prijmeni">Příjmení</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="prijmeni" th:field="*{surname}"/>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label class="col-sm-2 control-label" for="email">E-mail</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="email" th:field="*{email}"/>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label class="col-sm-2 control-label" for="phone">Telefon</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="phone" th:field="*{phone}"/>
+            </div>
+
+        </div>
+
+        <div id="lol" style="display: none;">
+
+            <div class="form-group">
+
+                <label class="col-sm-2 control-label" for="street">Ulice</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="street" th:field="*{street}"/>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <label class="col-sm-2 control-label" for="town">Město</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="town" th:field="*{town}"/>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <label class="col-sm-2 control-label" for="houseNumber">Číslo domu</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="houseNumber" th:field="*{houseNumber}"/>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <label class="col-sm-2 control-label" for="postalCode">PSČ</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="postalCode" th:field="*{postalCode}"/>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="checkbox">
+
+            <label><input type="checkbox" id="kokot" onclick="showAddress()" th:field="*{seller}" /> Chci být prodávající</label>
+        </div>
+
+
+
+
+        <div class="row">
+
+            <button type="submit" class="btn btn-default">Zaregistrovat se</button>
+
+        </div>
 
     </form>
+</div>
+
+<script type="text/javascript" src="/registration.js">
+
+
+
+
+
+</script>
+
 </body>
 </html>
