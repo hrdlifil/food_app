@@ -20,6 +20,12 @@ public class MyControllers {
         return "index";
     }
 
+    @RequestMapping("/login-error")
+    public String loginError(Model model) {
+        model.addAttribute("loginError", true);
+        return "index";
+    }
+
     @RequestMapping(value = "/registrationPage")
     public String getSecondPage(Model model){
 
