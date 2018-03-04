@@ -10,7 +10,7 @@ public interface AppUserRepository extends CrudRepository<AppUser,Long> {
 
     List<AppUser> findAll();
 
-    Optional<AppUser> findByLogin(String login);
+    AppUser findByLogin(String login);
 
     Optional<AppUser> findByPassword(String password);
 

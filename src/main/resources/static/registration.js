@@ -1,6 +1,13 @@
 
 var dement = 1;
 
+var sellerCheckBox = document.querySelector("#chciBytProdavajiciCheckBox");
+
+sellerCheckBox.addEventListener('click', function () {
+    alert('demente');
+
+})
+
 function showAddress() {
 
     if (dement % 2 == 0){

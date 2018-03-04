@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
 
     <meta charset="UTF-8"/>
     <title>Title</title>
@@ -15,15 +22,16 @@
 <div class="container">
     <H1> Zaregistrujte se Prosím</H1>
 
-    <form class="form-horizontal" id="lomonosov" onsubmit="return checkInfo()" th:object="${registrationCommand}" th:action="@{/doRegister}" method="post">
-
+    <p th:if="${registrationError.occured}" class="error"><span th:text="${registrationError.message}"/></p>
+    <form class="form-horizontal" id="registrationForm"  th:object="${registrationCommand}"
+          th:action="@{/doRegister}" method="post">
 
 
         <div class="form-group">
 
-        <label class="col-sm-2 control-label" for="login">Uživatelské jméno</label>
+            <label class="col-sm-2 control-label" for="login">Uživatelské jméno</label>
             <div class="col-sm-7">
-        <input type="text" class="form-control" name="login" id="login" th:field="*{login}"/>
+                <input type="text" class="form-control" name="login" id="login" th:field="*{login}"/>
             </div>
 
         </div>
@@ -72,7 +80,7 @@
 
         </div>
 
-        <div id="lol" style="display: none;">
+        <div id="registrationFormWithAddress" style="display: none;">
 
             <div class="form-group">
 
@@ -116,10 +124,9 @@
 
         <div class="checkbox">
 
-            <label><input type="checkbox" id="kokot" onclick="showAddress()" th:field="*{seller}" /> Chci být prodávající</label>
+            <label><input type="checkbox" id="chciBytProdavajiciCheckBox" th:field="*{seller}"/> Chci být
+                prodávající</label>
         </div>
-
-
 
 
         <div class="row">
@@ -131,10 +138,34 @@
     </form>
 </div>
 
-<script type="text/javascript" src="/registration.js">
+<script type="text/javascript">
+
+    var sellerCheckBox = document.querySelector("#chciBytProdavajiciCheckBox");
+
+    var addressIsRendered = false;
+
+    sellerCheckBox.addEventListener('click', function () {
 
 
+        if (!addressIsRendered) {
 
+            document.querySelector("#registrationFormWithAddress").style.display = "block";
+
+            addressIsRendered = true;
+
+            return;
+
+        } else {
+
+            document.querySelector("#registrationFormWithAddress").style.display = "none";
+
+            addressIsRendered = false;
+
+            return;
+
+        }
+
+    });
 
 
 </script>
