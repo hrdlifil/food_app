@@ -1,4 +1,4 @@
-package com.itforhumanity.food_app.config;
+package com.itforhumanity.food_app.security;
 
 import com.itforhumanity.food_app.entities.AppUser;
 import org.springframework.security.core.GrantedAuthority;

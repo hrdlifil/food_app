@@ -1,4 +1,4 @@
-package com.itforhumanity.food_app.config;
+package com.itforhumanity.food_app.security;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 

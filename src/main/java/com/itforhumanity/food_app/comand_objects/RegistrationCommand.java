@@ -1,8 +1,10 @@
 package com.itforhumanity.food_app.comand_objects;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
+@Scope(value = "prototype")
 public class RegistrationCommand {
 
     private String login;
