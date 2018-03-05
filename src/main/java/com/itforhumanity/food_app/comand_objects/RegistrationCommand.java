@@ -9,6 +9,8 @@ public class RegistrationCommand {
 
     private String password;
 
+    private String passwordAgain;
+
     private String name;
 
     private String surname;
@@ -130,5 +132,13 @@ public class RegistrationCommand {
 
     public void setSeller(boolean seller) {
         this.seller = seller;
+    }
+
+    public String getPasswordAgain() {
+        return passwordAgain;
+    }
+
+    public void setPasswordAgain(String passwordAgain) {
+        this.passwordAgain = passwordAgain;
     }
 }

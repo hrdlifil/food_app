@@ -53,9 +53,6 @@ public class AppUser implements Serializable {
     @Lob
     private byte[] photo;
 
-    @Transient
-    private String passwordAgain;
-
     public Long getUserId() {
         return userId;
     }
@@ -184,11 +181,4 @@ public class AppUser implements Serializable {
         this.photo = photo;
     }
 
-    public String getPasswordAgain() {
-        return passwordAgain;
-    }
-
-    public void setPasswordAgain(String passwordAgain) {
-        this.passwordAgain = passwordAgain;
-    }
 }

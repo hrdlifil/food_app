@@ -39,7 +39,15 @@
 
             <label class="col-sm-2 control-label" for="heslo">Heslo</label>
             <div class="col-sm-7">
-                <input type="text" class="form-control" id="heslo" th:field="*{password}"/>
+                <input type="password" class="form-control" id="heslo" th:field="*{password}"/>
+            </div>
+
+        </div>
+        <div class="form-group">
+
+            <label class="col-sm-2 control-label" for="hesloZnovu">Heslo znovu</label>
+            <div class="col-sm-7">
+                <input type="password" class="form-control" id="hesloZnovu" th:field="*{passwordAgain}"/>
             </div>
 
         </div>

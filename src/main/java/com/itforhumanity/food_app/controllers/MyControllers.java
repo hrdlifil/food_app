@@ -1,7 +1,11 @@
 package com.itforhumanity.food_app.controllers;
 
 import com.itforhumanity.food_app.comand_objects.RegistrationCommand;
+import com.itforhumanity.food_app.entities.Address;
+import com.itforhumanity.food_app.entities.AppUser;
 import com.itforhumanity.food_app.erors.RegistrationError;
+import com.itforhumanity.food_app.repositories.AddressRepository;
+import com.itforhumanity.food_app.repositories.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +22,12 @@ public class MyControllers {
 
     @Autowired
     private RegistrationError registrationError;
+
+    @Autowired
+    private AppUserRepository appUserRepository;
+
+    @Autowired
+    private AddressRepository addressRepository;
 
     @RequestMapping(value = "/")
     public String getFirstPage(){
@@ -128,6 +138,55 @@ public class MyControllers {
 
 
         }
+
+        if (!(registrationCommand.getPasswordAgain().equals(registrationCommand.getPassword()))){
+
+            registrationError.setOccured(true);
+            registrationError.setMessage("Heslo a Heslo znovu musejí být stejné");
+
+            model.addAttribute("registrationError", registrationError);
+
+            return "registrationPage";
+
+
+        }
+
+        AppUser user = appUserRepository.findByLogin(registrationCommand.getLogin());
+
+        if (user != null){
+
+            registrationError.setOccured(true);
+            registrationError.setMessage("Zadané uživatelské jméno již používá někdo jiný");
+
+            model.addAttribute("registrationError", registrationError);
+
+            return "registrationPage";
+
+
+        }
+
+        AppUser appUser = new AppUser();
+
+        appUser.setLogin(registrationCommand.getLogin());
+        appUser.setPassword(registrationCommand.getPassword());
+        appUser.setName(registrationCommand.getName());
+        appUser.setSurname(registrationCommand.getSurname());
+        appUser.setEmail(registrationCommand.getEmail());
+        appUser.setPhone(registrationCommand.getPhone());
+
+        if (registrationCommand.isSeller()){
+
+            Address address = new Address();
+            address.setTown(registrationCommand.getTown());
+            address.setStreet(registrationCommand.getStreet());
+            address.setHouseNumber(registrationCommand.getHouseNumber());
+            address.setPostalCode(registrationCommand.getPostalCode());
+            Address savedAddress = addressRepository.save(address);
+            appUser.setA(savedAddress);
+
+        }
+
+        appUserRepository.save(appUser);
 
         model.addAttribute("justRegistered",true);
 
