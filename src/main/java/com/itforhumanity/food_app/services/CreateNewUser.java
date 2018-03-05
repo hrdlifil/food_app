@@ -45,6 +45,7 @@ public class CreateNewUser{
 
         if (registrationCommand.isSeller()){
 
+            appUser.setSeller(true);
             role.setName("seller");
             Address address = new Address();
             address.setTown(registrationCommand.getTown());
