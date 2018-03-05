@@ -1,10 +1,12 @@
 package com.itforhumanity.food_app.security;
 
 import com.itforhumanity.food_app.entities.AppUser;
+import com.itforhumanity.food_app.entities.Role;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
+import java.util.*;
 
 public class MyUserPrincipal implements UserDetails {
     private AppUser appUser;
@@ -15,7 +17,20 @@ public class MyUserPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        Set<GrantedAuthority> _grntdAuths = new HashSet<>();
+
+        List<Role> _roles = null;
+
+        if (appUser!=null) {
+            _roles = appUser.getRoles();
+        }
+
+        if (_roles!=null) {
+            for (Role _role : _roles) {
+                _grntdAuths.add(new GrantedAuthorityImpl(_role.getName()));
+            }
+        }
+        return _grntdAuths;
     }
 
     @Override
@@ -47,4 +62,6 @@ public class MyUserPrincipal implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
 }

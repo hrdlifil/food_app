@@ -4,6 +4,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -52,6 +54,15 @@ public class AppUser implements Serializable {
 
     @Lob
     private byte[] photo;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "User_Id_PK"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "Role_Id_PK"))
+    private List<Role> roles;
 
     public Long getUserId() {
         return userId;
@@ -181,4 +192,11 @@ public class AppUser implements Serializable {
         this.photo = photo;
     }
 
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
 }
