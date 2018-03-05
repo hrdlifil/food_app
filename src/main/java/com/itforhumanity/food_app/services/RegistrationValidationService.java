@@ -99,6 +99,36 @@ public class RegistrationValidationService {
 
         }
 
+        char[] loginChar = registrationCommand.getLogin().toCharArray();
+
+        for (char ch : loginChar){
+
+            if (ch == ' ' || ch == '=' || ch == '(' || ch == ')' || ch == '{' || ch == '}' || ch == ';'){
+
+                registrationError.setOccured(true);
+                registrationError.setMessage("Z bezpečnostních důvodů nejsou podporované speciální znaky v uživatelském jméně");
+
+                return registrationError;
+
+            }
+
+        }
+
+        char[] pwdChar = registrationCommand.getPassword().toCharArray();
+
+        for (char ch : pwdChar){
+
+            if (ch == ' ' || ch == '=' || ch == '(' || ch == ')' || ch == '{' || ch == '}' || ch == ';'){
+
+                registrationError.setOccured(true);
+                registrationError.setMessage("Z bezpečnostních důvodů nejsou podporované speciální znaky v hesle");
+
+                return registrationError;
+
+            }
+
+        }
+
         AppUser user = appUserRepository.findByLogin(registrationCommand.getLogin());
 
         if (user != null) {
