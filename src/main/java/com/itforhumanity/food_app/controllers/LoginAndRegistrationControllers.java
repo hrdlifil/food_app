@@ -27,16 +27,16 @@ public class LoginAndRegistrationControllers {
     @Autowired
     private RegistrationError registrationError;
 
-    @RequestMapping(value = "/")
+    @RequestMapping(value = "/loginPage")
     public String getFirstPage(){
 
-        return "index";
+        return "loginPage";
     }
 
     @RequestMapping("/login-error")
     public String loginError(Model model) {
         model.addAttribute("loginError", true);
-        return "index";
+        return "loginPage";
     }
 
     @RequestMapping(value = "/registrationPage")
@@ -65,7 +65,7 @@ public class LoginAndRegistrationControllers {
 
         model.addAttribute("justRegistered",true);
 
-        return "index";
+        return "loginPage";
 
 
     }
