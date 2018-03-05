@@ -1,11 +1,7 @@
 package com.itforhumanity.food_app.controllers;
 
 import com.itforhumanity.food_app.comand_objects.RegistrationCommand;
-import com.itforhumanity.food_app.entities.Address;
-import com.itforhumanity.food_app.entities.AppUser;
 import com.itforhumanity.food_app.erors.RegistrationError;
-import com.itforhumanity.food_app.repositories.AddressRepository;
-import com.itforhumanity.food_app.repositories.AppUserRepository;
 import com.itforhumanity.food_app.services.CreateNewUser;
 import com.itforhumanity.food_app.services.RegistrationValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class MyControllers {
+public class LoginAndRegistrationControllers {
 
 
     @Autowired
